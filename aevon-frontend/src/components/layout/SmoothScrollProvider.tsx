@@ -18,7 +18,6 @@ export default function SmoothScrollProvider({
       syncTouch: false,
       // Default true in some versions, ensuring it's off on touch
       // The option is actually smoothTouch in newer Lenis
-      smoothTouch: false,
     });
 
     function raf(time: number) {
