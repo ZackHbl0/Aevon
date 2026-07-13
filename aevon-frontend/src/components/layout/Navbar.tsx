@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import Magnetic from "@/components/ui/Magnetic";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -121,8 +120,9 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="relative z-50 w-10 h-10 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/10 text-black dark:text-white"
+              className="relative z-50 w-10 h-10 flex items-center justify-center rounded-full bg-black/5 dark:bg-white/10 text-black dark:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-indigo"
               aria-label="Toggle Menu"
+              aria-expanded={mobileMenuOpen}
             >
               <div className="w-5 h-5 relative flex items-center justify-center">
                 <motion.span

@@ -124,6 +124,7 @@ export default function Contact() {
               Hello Aevon, my name is{" "}
               <input 
                 type="text" 
+                aria-label="Your Name"
                 placeholder="Your Name" 
                 value={formState.name}
                 onChange={(e) => setFormState({...formState, name: e.target.value})}
@@ -132,6 +133,7 @@ export default function Contact() {
               and I represent{" "}
               <input 
                 type="text" 
+                aria-label="Your Company"
                 placeholder="Company (Optional)" 
                 value={formState.company}
                 onChange={(e) => setFormState({...formState, company: e.target.value})}
@@ -140,6 +142,7 @@ export default function Contact() {
               . We are looking to engineer{" "}
               <input 
                 type="text" 
+                aria-label="Your Project"
                 placeholder="A Premium SaaS Platform..." 
                 value={formState.project}
                 onChange={(e) => setFormState({...formState, project: e.target.value})}
@@ -148,6 +151,7 @@ export default function Contact() {
               . You can reach me to discuss details at{" "}
               <input 
                 type="email" 
+                aria-label="Your Email Address"
                 placeholder="Email Address" 
                 value={formState.email}
                 onChange={(e) => setFormState({...formState, email: e.target.value})}
@@ -185,7 +189,7 @@ export default function Contact() {
                   className={`relative overflow-hidden w-64 h-24 rounded-[2rem] flex items-center justify-center bg-transparent border-2 ${isFormValid ? 'border-gray-900 dark:border-white hover:border-primary-indigo dark:hover:border-primary-indigo cursor-pointer shadow-2xl' : 'border-gray-300 dark:border-white/10 opacity-50 cursor-not-allowed'} transition-colors duration-300 z-20`}
                 >
                   {/* Text Layer - Must be visible over both backgrounds */}
-                  <span className="relative z-20 font-heading font-bold text-xl uppercase tracking-widest text-gray-900 dark:text-white flex items-center gap-3 mix-blend-difference">
+                  <span className="relative z-20 font-heading font-bold text-xl uppercase tracking-widest text-gray-900 dark:text-white flex items-center gap-3 drop-shadow-md">
                     Transmit <Send size={20} className={isHolding ? "translate-x-2 -translate-y-2 transition-transform duration-1000" : ""} />
                   </span>
 

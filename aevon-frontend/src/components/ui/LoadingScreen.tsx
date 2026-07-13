@@ -8,12 +8,43 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time for 3D assets and fonts
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
+    let minTimeElapsed = false;
+    let pageReady = false;
 
-    return () => clearTimeout(timer);
+    const checkReady = () => {
+      if (minTimeElapsed && pageReady) {
+        setIsLoading(false);
+      }
+    };
+
+    // Enforce minimum display time for the brand animation (1.2s instead of 2.5s)
+    const timer = setTimeout(() => {
+      minTimeElapsed = true;
+      checkReady();
+    }, 1200);
+
+    const handleLoad = () => {
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          pageReady = true;
+          checkReady();
+        });
+      } else {
+        pageReady = true;
+        checkReady();
+      }
+    };
+
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("load", handleLoad);
+    };
   }, []);
 
   return (
@@ -40,7 +71,7 @@ export default function LoadingScreen() {
               >
                 <span className="font-heading text-6xl md:text-8xl font-black tracking-tighter flex items-center">
                   <span className="text-primary-indigo">A</span>
-                  <span className="text-white">EVON</span>
+                  <span className="text-gray-900 dark:text-white">EVON</span>
                 </span>
               </motion.div>
             </div>
