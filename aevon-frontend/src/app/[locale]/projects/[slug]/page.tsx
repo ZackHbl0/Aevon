@@ -32,9 +32,9 @@ const getProjectData = (slug: string) => {
       challenge: "Healthcare software is notoriously clunky and difficult to navigate. The goal was to build a HIPAA-compliant platform that felt as smooth and luxurious as a modern consumer app, while handling complex multi-clinic scheduling logic.",
       solution: "We developed a secure, multi-tenant architecture using Node.js and PostgreSQL. The frontend was built with React and Tailwind CSS, focusing heavily on micro-interactions and an ultra-clean UI to reduce cognitive load for medical staff.",
       technologies: ["React", "Node.js", "PostgreSQL", "Tailwind CSS", "Redis", "AWS HIPAA Cloud"],
-      cover: "https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&q=80&w=2000",
+      cover: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000",
       images: [
-        "https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1200",
       ],
       demoUrl: "https://example.com/medibook",
       githubUrl: "https://github.com/aevon",

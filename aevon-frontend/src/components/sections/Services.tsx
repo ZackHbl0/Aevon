@@ -93,7 +93,6 @@ export default function Services() {
                 initial={{ borderRadius: 32 }}
                 animate={{
                   flex: isActive ? 5 : 1,
-                  backgroundColor: isActive ? "var(--bg-active)" : "var(--bg-inactive)",
                   opacity: isActive ? 1 : 0.6,
                 }}
                 transition={{
@@ -102,15 +101,9 @@ export default function Services() {
                   damping: 30,
                   mass: 0.8
                 }}
-                style={
-                  {
-                    "--bg-active": "var(--fallback-glass)",
-                    "--bg-inactive": "var(--fallback-glass-dim)",
-                  } as React.CSSProperties
-                }
-                className={`relative overflow-hidden cursor-pointer flex flex-col justify-end p-8 glass-premium border ${
-                  isActive ? service.border : "border-black/5 dark:border-white/5"
-                } transition-colors duration-300`}
+                className={`relative overflow-hidden cursor-pointer flex flex-col justify-end p-8 glass-premium border transition-all duration-500 ${
+                  isActive ? `${service.border} bg-black/5 dark:bg-white/10` : "border-black/5 dark:border-white/5 bg-transparent"
+                }`}
               >
                 {/* Background Ambient Glow (Only when active) */}
                 <AnimatePresence>
