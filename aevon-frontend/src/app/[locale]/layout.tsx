@@ -4,7 +4,6 @@ import "../globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -103,7 +102,6 @@ export default async function RootLayout({
             <div className="noise-overlay"></div>
             <LoadingScreen />
             <SmoothScrollProvider>
-              <CustomCursor />
               <Navbar />
               <main className="flex-grow pt-24">{children}</main>
               <Footer />
