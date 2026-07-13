@@ -115,11 +115,11 @@ function ProjectSlide({
     [1, 0.9]
   );
 
-  // Darken when next slide covers it
-  const filter = useTransform(
+  // Darken when next slide covers it via hardware-accelerated opacity overlay
+  const overlayOpacity = useTransform(
     scrollYProgress,
     [nextStartSlide, nextEndSlide],
-    ["brightness(1)", "brightness(0.3)"]
+    [0, 0.7]
   );
 
   // Parallax for floating images inside
@@ -130,9 +130,15 @@ function ProjectSlide({
 
   return (
     <motion.div
-      style={{ y, scale, filter, zIndex: index }}
-      className={`absolute inset-0 w-full h-full flex flex-col lg:flex-row overflow-hidden origin-top ${project.bgClass} transition-colors duration-500`}
+      style={{ y, scale, zIndex: index }}
+      className={`absolute inset-0 w-full h-full flex flex-col lg:flex-row overflow-hidden origin-top ${project.bgClass} transition-colors duration-500 will-change-transform`}
     >
+      {/* Black overlay for hardware-accelerated darkening */}
+      <motion.div
+        style={{ opacity: overlayOpacity }}
+        className="absolute inset-0 bg-black pointer-events-none z-50"
+      />
+      
       {/* Content Side (Left) */}
       <div className="w-full lg:w-5/12 h-[40%] lg:h-full flex flex-col justify-center px-6 md:px-16 lg:px-24 relative z-40">
         <div className="space-y-6 max-w-xl">
@@ -170,7 +176,7 @@ function ProjectSlide({
         {/* Main large image */}
         <motion.div 
           style={{ y: parallaxY1 }}
-          className="absolute w-[85%] md:w-[65%] lg:w-[70%] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-10"
+          className="absolute w-[85%] md:w-[65%] lg:w-[70%] aspect-[4/3] rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-10 will-change-transform"
         >
           <Image src={project.images[0]} alt={project.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" priority={index === 0} />
         </motion.div>
@@ -178,7 +184,7 @@ function ProjectSlide({
         {/* Secondary floating image (Top Right) */}
         <motion.div 
           style={{ y: parallaxY3 }}
-          className="absolute top-[5%] lg:top-[15%] right-[5%] lg:right-[10%] w-[35%] lg:w-[30%] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)] z-30"
+          className="absolute top-[5%] lg:top-[15%] right-[5%] lg:right-[10%] w-[35%] lg:w-[30%] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.4)] z-30 will-change-transform"
         >
           <Image src={project.images[1]} alt={project.title} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
         </motion.div>
@@ -186,7 +192,7 @@ function ProjectSlide({
         {/* Tertiary floating image (Bottom Left) */}
         <motion.div 
           style={{ y: parallaxY2 }}
-          className="absolute bottom-[5%] lg:bottom-[15%] left-[5%] lg:left-[10%] w-[40%] lg:w-[35%] aspect-square rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-20"
+          className="absolute bottom-[5%] lg:bottom-[15%] left-[5%] lg:left-[10%] w-[40%] lg:w-[35%] aspect-square rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.5)] z-20 will-change-transform"
         >
           <Image src={project.images[2]} alt={project.title} fill className="object-cover" sizes="(max-width: 1024px) 50vw, 25vw" />
         </motion.div>

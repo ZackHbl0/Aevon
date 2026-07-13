@@ -15,8 +15,10 @@ export default function SmoothScrollProvider({
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      syncTouch: false,
+      // Default true in some versions, ensuring it's off on touch
+      // The option is actually smoothTouch in newer Lenis
+      smoothTouch: false,
     });
 
     function raf(time: number) {

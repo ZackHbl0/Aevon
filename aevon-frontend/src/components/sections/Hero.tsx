@@ -47,7 +47,7 @@ export default function Hero() {
       
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-40 dark:opacity-80 mix-blend-normal dark:mix-blend-screen">
-        <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+        <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 6], fov: 45 }}>
           <ambientLight intensity={0.2} />
           <directionalLight position={[10, 10, 5]} intensity={3} color="#8B5CF6" />
           <spotLight position={[-10, -10, -5]} intensity={4} color="#0066FF" />
